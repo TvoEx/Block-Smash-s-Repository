@@ -1,0 +1,13 @@
+"Gamemode"
+{
+	"base"		"base"
+	"title"		"BaseWars"
+	"maps"		"^rpdm_"
+	"menusystem"	"1"
+	"workshopid"	"15895"
+	
+	"author_name"	"TvoEx & Azrael"
+	"author_email"	""
+	"author_url"	""
+
+}
