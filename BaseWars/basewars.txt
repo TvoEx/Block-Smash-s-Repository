@@ -8,6 +8,6 @@
 	
 	"author_name"	"TvoEx & Azrael"
 	"author_email"	""
-	"author_url"	""
+	"author_url"	"http://block-smash.com/"
 
 }
