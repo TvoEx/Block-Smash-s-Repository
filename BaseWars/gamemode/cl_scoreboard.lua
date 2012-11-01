@@ -264,7 +264,7 @@ end
 
 function GM:HUDDrawTargetID()
 
-	local tr = utilx.GetPlayerTrace( LocalPlayer(), LocalPlayer():GetCursorAimVector() )
+	local tr = util.GetPlayerTrace( LocalPlayer(), LocalPlayer():GetCursorAimVector() )
 	local trace = util.TraceLine( tr )
 	if (!trace.Hit) then return end
 	if (!trace.HitNonWorld) then return end

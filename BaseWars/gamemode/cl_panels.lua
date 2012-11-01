@@ -69,7 +69,7 @@ function GM:LoadPreviousEntData()
 		return
 	end
 	
-	local fileRead = file.Read( "ServerEntData.txt" )
+	local fileRead = file.Read( "ServerEntData.txt", "DATA" )
 	local entDataTable = glon.decode( fileRead )
 	if( !entDataTable ) then
 		ErrorNoHalt( "\tENTDATA: Corrupted glon\n" )

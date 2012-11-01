@@ -5,7 +5,7 @@ local DecayRate = DecayTime
 local DecayRateCounter = CurTime( ) + DecayRate;
 
 local function AddDecay( ent, decaytime )
-	timer.Simple( 1, function( )
+	timer.Simple( 1, function )
 		if ent:IsValid( ) then
 			local _r, _g, _b = ent:GetColor( );
 
@@ -19,6 +19,8 @@ local function AddDecay( ent, decaytime )
 		end;
 	end );
 end;
+
+
 
 hook.Add( "Think", "EntityDecay", function( )
 	for k, v in pairs( _decays ) do

@@ -744,7 +744,9 @@ function UpdateHelp()
 	
 	end
 	
-	timer.Simple( .5, tDelayHelp );
+    timer.Simple( .5, function() tDelayHelp() end );
+
+
 	
 end
 usermessage.Hook( "UpdateHelp", UpdateHelp );
@@ -788,7 +790,8 @@ function AddHelpLabel( msg )
 		
 	end
 	
-	timer.Simple( .01, tAddHelpLabel, id, category, text, constant );
+	timer.Simple( .01, function() tAddHelpLabel( id, category, text, constant ) end );
+
 
 end
 usermessage.Hook( "AddHelpLabel", AddHelpLabel );
@@ -813,7 +816,7 @@ function ChangeHelpLabel( msg )
 		
 	end
 	
-	timer.Simple( .01, tChangeHelpLabel, id, text );
+	timer.Simple( .01, function() tChangeHelpLabel( id, text) end );
 
 end
 usermessage.Hook( "ChangeHelpLabel", ChangeHelpLabel );
@@ -829,7 +832,7 @@ function AddHelpCategory( msg )
 
 	end
 		
-	timer.Simple( .01, tAddHelpCategory, id, text );
+	timer.Simple( .01, function() tAddHelpCategory( id, text) end );
 		
 end
 usermessage.Hook( "AddHelpCategory", AddHelpCategory );
@@ -1996,17 +1999,17 @@ function Curtime()
 	return CurTime()
 end
 
-language.Add("CombineCannon_ammo", "Flamethrower Fuel")
-language.Add("SniperRound_ammo", "Sniper Rounds")
-language.Add("SMG_ammo", "Rifle Rounds")
-language.Add("Pistol_ammo", "Pistol Ammo")
-language.Add("SLAM_ammo", "Grenades")
-language.Add("XBowBolt_ammo", "Dart Gun Bolts")
-language.Add("env_fire", "Fire")
-language.Add("env_physexplosion", "The Game")
+language.Add("CombineCannon.ammo", "Flamethrower Fuel")
+language.Add("SniperRound.ammo", "Sniper Rounds")
+language.Add("SMG.ammo", "Rifle Rounds")
+language.Add("Pistol.ammo", "Pistol Ammo")
+language.Add("SLAM.ammo", "Grenades")
+language.Add("XBowBolt.ammo", "Dart Gun Bolts")
+language.Add("env.fire", "Fire")
+language.Add("env.physexplosion", "The Game")
 language.Add("entityflame", "Flames")
-language.Add("env_explosion", "Explosion")
-language.Add("SBoxLimit_magnets", "You have hit the Magnet limit!")
+language.Add("env.explosion", "Explosion")
+language.Add("SBoxLimit.magnets", "You have hit the Magnet limit!")
 
 -- setpos 43.548927 711.829834 -65.131531;setang 4.179978 -176.199966 0.000000
 
