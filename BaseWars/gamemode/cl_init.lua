@@ -116,7 +116,7 @@ function DrawPlayerInfo( ply, scn )
 		local weapn = ply:GetActiveWeapon()
 		local wepclass = "Nothing"
 		local wepammo = 0
-		if ValidEntity(weapn) then
+		if IsValid(weapn) then
 			wepclass = weapn:GetClass()
 			wepammo = weapn:Clip1()
 		end
@@ -147,7 +147,7 @@ function DrawScans()
 	for k, v in pairs(Scans) do
 		if v!=nil then
 			local ply = v.Ply
-			if ValidEntity(ply) then
+			if IsValid(ply) then
 				local pos = v.Pos + Vector(0,0,100)
 				
 				pos = pos:ToScreen();
@@ -342,7 +342,7 @@ function DrawStructureInfo( ent, alpha )
 	if ent:GetClass()=="powerplant" then
 		for i=1,5,1 do
 			draw.DrawText( "Z", "HL2Symbols", pos.x-89+(i*30), pos.y-74, Color(0,0,0,alpha*1.55), 1 );
-			if ValidEntity(ent:GetNWEntity("socket"..tostring(i))) || ent:GetNWEntity("socket"..tostring(i))==ent then
+			if IsValid(ent:GetNWEntity("socket"..tostring(i))) || ent:GetNWEntity("socket"..tostring(i))==ent then
 				render.SetMaterial(Material('cable/redlaser'))
 				render.DrawBeam( ent:GetPos(), ent:GetNWEntity("socket"..tostring(i)):GetPos(), 2, 0, 0, Color(255,255,255,255) )
 				draw.DrawText( "Z", "HL2Symbols", pos.x-90+(i*30), pos.y-75, Color(255,0,0,alpha*1.55), 1 );
@@ -355,7 +355,7 @@ function DrawStructureInfo( ent, alpha )
 		if ent:GetClass()=="superpowerplant" then
 		for i=1,10,1 do
 			draw.DrawText( "Z", "HL2Symbols", pos.x-89+(i*30), pos.y-74, Color(0,0,0,alpha*1.55), 1 );
-			if ValidEntity(ent:GetNWEntity("socket"..tostring(i))) || ent:GetNWEntity("socket"..tostring(i))==ent then
+			if IsValid(ent:GetNWEntity("socket"..tostring(i))) || ent:GetNWEntity("socket"..tostring(i))==ent then
 				render.SetMaterial(Material('cable/redlaser'))
 				render.DrawBeam( ent:GetPos(), ent:GetNWEntity("socket"..tostring(i)):GetPos(), 2, 0, 0, Color(255,255,255,255) )
 				draw.DrawText( "Z", "HL2Symbols", pos.x-90+(i*30), pos.y-75, Color(255,0,0,alpha*1.55), 1 );
@@ -419,7 +419,7 @@ function DrawDisplay()
 	end
 	DrawScans()
 	
-	if !ValidEntity(tr.Entity) && ValidEntity(viewpl) && viewpltime>CurTime() && LocalPlayer():GetNWBool("scannered") then
+	if !IsValid(tr.Entity) && IsValid(viewpl) && viewpltime>CurTime() && LocalPlayer():GetNWBool("scannered") then
 		DrawPlayerInfo(viewpl,LocalPlayer():GetNWBool("scannered"))
 	end
 	if( tr.Entity!=nil and tr.Entity:IsValid() and tr.Entity:GetPos():Distance( LocalPlayer():GetPos() ) <= 768 ) then
@@ -451,7 +451,7 @@ function DrawDisplay()
 				end
 			end
 		else
-			if ValidEntity(viewpl) && viewpltime>CurTime() && LocalPlayer():GetNWBool("scannered") then
+			if IsValid(viewpl) && viewpltime>CurTime() && LocalPlayer():GetNWBool("scannered") then
 				DrawPlayerInfo(viewpl,LocalPlayer():GetNWBool("scannered"))
 			end
 			viewstructure = nil
@@ -637,7 +637,7 @@ function DrawDrugTrail(color, ent, effect)
 	local b = color.b
 	if type=="drug_bolt" then
 		local gun = ent:GetActiveWeapon()
-		if ValidEntity(gun) then
+		if IsValid(gun) then
 			local attachpos = gun:GetAttachment(1)
 			if attachpos!=nil then
 				local effectdata = EffectData()
@@ -1443,7 +1443,7 @@ usermessage.Hook( "gunfactorygui", MsgGunFactory );
 function MsgGunFactoryGet( msg )
 	local time = msg:ReadFloat()
 	local ent = msg:ReadEntity()
-	if ValidEntity(ent) then
+	if IsValid(ent) then
 		ent:GetTable().TimeToFinish = time
 	end
 end
@@ -1719,7 +1719,7 @@ usermessage.Hook( "testgunfactorygui", MsgTestFactory );
 function MsgGunFactoryGet( msg )
 	local time = msg:ReadFloat()
 	local ent = msg:ReadEntity()
-	if ValidEntity(ent) then
+	if IsValid(ent) then
 		ent:GetTable().TimeToFinish = time
 	end
 end

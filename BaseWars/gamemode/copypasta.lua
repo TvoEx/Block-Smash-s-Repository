@@ -405,7 +405,8 @@ function PANEL:BuildList()
 					local drugs = vgui.Create("DLabel", Icon)
 					drugs:SetText(drugtable[ data ].symbol)
 					drugs:SetFont(drugtable[ data ].font)
-					drugs:SetColor(drugtable[ data ].color)
+					drugs:SetColor(Color(drugtable[ data ].color))
+					drugs:SetRenderMode( RENDERMODE_TRANSALPHA )
 
 					if(drugtable[ data ].font == "DrugFont2") then
 						drugs:SetPos(23, 3)
