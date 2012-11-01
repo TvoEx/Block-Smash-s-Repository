@@ -103,7 +103,7 @@ end
 // lol redundant
 
 function MsgManageMessages(msg)
-	local text = msg:ReadString()
+	local text = msg:Read()
 	local type = msg:ReadShort()
 	local time = msg:ReadShort()
 	if LocalPlayer():GetInfoNum("bw_showmessages")==nil then

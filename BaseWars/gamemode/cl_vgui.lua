@@ -22,7 +22,7 @@ end
 
 function MsgDoVote( msg )
 
-	local question = msg:ReadString();
+	local question = msg:Read();
 	local voteid = msg:ReadString();
 	local inputenabled = false;
 	
@@ -113,7 +113,7 @@ usermessage.Hook( "DoVote", MsgDoVote );
 
 function KillVoteVGUI( msg )
 
-	local id = msg:ReadString();
+	local id = msg:Read();
 
 	if( VoteVGUI[id .. "vote"] ) then
 	

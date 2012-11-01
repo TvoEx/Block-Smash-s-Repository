@@ -50,7 +50,7 @@ local function RecvPlrKilledByPlr( message )
 	local victim 	= message:ReadEntity();
 	local inflictor	= message:ReadEntity();
 	local attacker 	= message:ReadEntity();
-	local class	= message:ReadString();
+	local class	= message:Read();
 	local headshot = message:ReadBool()
 	GAMEMODE:AddDeathNotice2( attacker:Name(), attacker:Team(), class, victim:Name(), victim:Team(), inflictor, headshot )
 
@@ -62,7 +62,7 @@ usermessage.Hook( "PlrKilledPlr", RecvPlrKilledByPlr )
 local function RecvPlrKilledSelf( message )
 	local victim 	= message:ReadEntity();	
 	local inflictor = message:ReadEntity();	
-	local class	= message:ReadString();
+	local class	= message:Read();
 	local headshot = message:ReadBool()
 	
 	GAMEMODE:AddDeathNotice2( nil, -1, class, victim:Name(), victim:Team(), inflictor, headshot )
@@ -75,8 +75,8 @@ usermessage.Hook( "PlrKilledSelf", RecvPlrKilledSelf )
 local function RecvPlrKilled( message )
 	local victim 	= message:ReadEntity();
 	local inflictor	= message:ReadEntity();
-	local attacker 	= "#" .. message:ReadString();
-	local class	= message:ReadString();
+	local attacker 	= "#" .. message:Read();
+	local class	= message:Read();
 	local headshot = message:ReadBool()
 			
 	GAMEMODE:AddDeathNotice2( attacker, -1, class, victim:Name(), victim:Team(), inflictor, headshot )
@@ -86,10 +86,10 @@ end
 usermessage.Hook( "PlrKilled", RecvPlrKilled )
 
 local function RecvPlrKilledNPC( message )
-	local victim 	= "#" .. message:ReadString();
+	local victim 	= "#" .. message:Read();
 	local inflictor	= message:ReadEntity();
 	local attacker 	= message:ReadEntity();
-	local class	= message:ReadString();
+	local class	= message:Read();
 	
 	GAMEMODE:AddDeathNotice2( attacker:Name(), attacker:Team(), class, victim, -1, inflictor, false )
 
@@ -99,10 +99,10 @@ usermessage.Hook( "PlrKilledNPC", RecvPlrKilledNPC )
 
 
 local function RecvNPCKillNPC( message )
-	local victim 	= "#" .. message:ReadString();
+	local victim 	= "#" .. message:Read();
 	local inflictor	= message:ReadEntity();
-	local attacker 	= "#" .. message:ReadString();
-	local class	= message:ReadString();
+	local attacker 	= "#" .. message:Read();
+	local class	= message:Read();
 	GAMEMODE:AddDeathNotice2( attacker, -1, class, victim, -1, inflictor, false )
 
 end

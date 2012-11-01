@@ -687,7 +687,7 @@ function AdminTell( msg )
 
 	AdminTellStartTime = CurTime();
 	AdminTellAlpha = 0;
-	AdminTellMsg = msg:ReadString();
+	AdminTellMsg = msg:Read();
 
 end
 usermessage.Hook( "AdminTell", AdminTell );
@@ -703,7 +703,7 @@ function ShowLetter( msg )
 
 	LetterType = msg:ReadShort();
 	LetterPos = msg:ReadVector();
-	LetterMsg = msg:ReadString();
+	LetterMsg = msg:Read();
 	LetterY = ScrH() / 2;
 	LetterAlpha = 0;
 	LetterStartTime = CurTime();
@@ -770,7 +770,7 @@ function AddHelpLabel( msg )
 
 	local id = msg:ReadShort();
 	local category = msg:ReadShort();
-	local text = msg:ReadString();
+	local text = msg:Read();
 	local constant = msg:ReadShort();
 	
 	local function tAddHelpLabel( id, category, text, constant )
@@ -799,7 +799,7 @@ usermessage.Hook( "AddHelpLabel", AddHelpLabel );
 function ChangeHelpLabel( msg )
 
 	local id = msg:ReadShort();
-	local text = msg:ReadString();
+	local text = msg:Read();
 
 	local function tChangeHelpLabel( id, text )
 	
@@ -824,7 +824,7 @@ usermessage.Hook( "ChangeHelpLabel", ChangeHelpLabel );
 function AddHelpCategory( msg )
 
 	local id = msg:ReadShort();
-	local text = msg:ReadString();
+	local text = msg:Read();
 	
 	local function tAddHelpCategory( id, text )
 	
@@ -861,7 +861,7 @@ GVGUI = { }
 PanelNumg = 0;
 
 function MsgGunVault( msg )
-	local gunlist = string.Explode(",", msg:ReadString() )
+	local gunlist = string.Explode(",", msg:Read() )
 	local vault = msg:ReadShort()
 	local upgradelist = string.Explode(",", msg:ReadString() )
 	local inputenabled = false;
@@ -1146,9 +1146,9 @@ hook.Add("HUDPaint", "HUD_TEST", TestDrawHud)
 
 
 function MsgPillBox( msg )
-	local gunlist = string.Explode(",", msg:ReadString() )
+	local gunlist = string.Explode(",", msg:Read() )
 	local vault = msg:ReadShort()
-	// local upgradelist = string.Explode(",", msg:ReadString() )
+	// local upgradelist = string.Explode(",", msg:Read() )
 	local inputenabled = false;
 	if( HelpToggled or GUIToggled ) then
 		inputenabled = true;
@@ -1227,9 +1227,9 @@ usermessage.Hook( "pillboxgui", MsgPillBox );
 
 -----------------------------------------------------Locker-------------------------------------------------------
 function MsgLocker( msg )
-	local gunlist = string.Explode(",", msg:ReadString() )
+	local gunlist = string.Explode(",", msg:Read() )
 	local vault = msg:ReadShort()
-	// local upgradelist = string.Explode(",", msg:ReadString() )
+	// local upgradelist = string.Explode(",", msg:Read() )
 	local inputenabled = false;
 	if( HelpToggled or GUIToggled ) then
 		inputenabled = true;
@@ -1563,7 +1563,7 @@ end
 usermessage.Hook( "killgunfactorygui", KillGunFactoryGUI );
 
 function MUpdateAgenda(msg)
-	MobAgenda = msg:ReadString()
+	MobAgenda = msg:Read()
 end
 usermessage.Hook( "UpdateMobAgenda", MUpdateAgenda );
 
@@ -1754,7 +1754,7 @@ end
 usermessage.Hook( "testkillgunfactorygui", KillGunFactoryGUI );
 
 function MUpdateAgenda(msg)
-	MobAgenda = msg:ReadString()
+	MobAgenda = msg:Read()
 end
 usermessage.Hook( "UpdateMobAgenda", MUpdateAgenda );
 
@@ -2069,12 +2069,12 @@ concommand.Add("bw_factionmenu",GM.OpenTribeMenu)
    Tribe system
 ---------------------------------------------------------*/
 function GM.getTribes(data)
-	team.SetUp(data:ReadShort(),data:ReadString(),Color(data:ReadShort(),data:ReadShort(),data:ReadShort(),255))
+	team.SetUp(data:ReadShort(),data:Read(),Color(data:ReadShort(),data:ReadShort(),data:ReadShort(),255))
 end
 usermessage.Hook("recvTribes",GM.getTribes)
 
 function GM.ReceiveTribe(data)
-	local name = data:ReadString()
+	local name = data:Read()
 	local id = data:ReadShort()
 	local red = data:ReadShort()
 	local green = data:ReadShort()
